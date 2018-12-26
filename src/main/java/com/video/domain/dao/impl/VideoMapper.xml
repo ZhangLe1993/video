@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.domain.dao.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.video.domain.entity.Video">
+    <id column="video_id" jdbcType="VARCHAR" property="videoId" />
+    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
+    <result column="video_title" jdbcType="VARCHAR" property="videoTitle" />
+    <result column="video_descript" jdbcType="VARCHAR" property="videoDescript" />
+    <result column="video_content" jdbcType="VARCHAR" property="videoContent" />
+    <result column="channel_type" jdbcType="VARCHAR" property="channelType" />
+    <result column="video_type" jdbcType="VARCHAR" property="videoType" />
+    <result column="video_source" jdbcType="VARCHAR" property="videoSource" />
+    <result column="upload_type" jdbcType="VARCHAR" property="uploadType" />
+    <result column="video_cover" jdbcType="VARCHAR" property="videoCover" />
+    <result column="video_state" jdbcType="VARCHAR" property="videoState" />
+    <result column="audit_time" jdbcType="VARCHAR" property="auditTime" />
+    <result column="audit_person_id" jdbcType="VARCHAR" property="auditPersonId" />
+    <result column="audit_person_name" jdbcType="VARCHAR" property="auditPersonName" />
+    <result column="publish_time" jdbcType="VARCHAR" property="publishTime" />
+    <result column="publish_person_type" jdbcType="VARCHAR" property="publishPersonType" />
+    <result column="publish_person_id" jdbcType="VARCHAR" property="publishPersonId" />
+    <result column="publish_person_name" jdbcType="VARCHAR" property="publishPersonName" />
+    <result column="unpublish_time" jdbcType="VARCHAR" property="unpublishTime" />
+    <result column="unpublish_person_type" jdbcType="VARCHAR" property="unpublishPersonType" />
+    <result column="unpublish_person_id" jdbcType="VARCHAR" property="unpublishPersonId" />
+    <result column="unpublish_person_name" jdbcType="VARCHAR" property="unpublishPersonName" />
+    <result column="delete_time" jdbcType="VARCHAR" property="deleteTime" />
+    <result column="delete_person_id" jdbcType="VARCHAR" property="deletePersonId" />
+    <result column="delete_person_name" jdbcType="VARCHAR" property="deletePersonName" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="create_person_id" jdbcType="VARCHAR" property="createPersonId" />
+    <result column="create_person_name" jdbcType="VARCHAR" property="createPersonName" />
+    <result column="download_count" jdbcType="INTEGER" property="downloadCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    video_id, video_name, video_title, video_descript, video_content, channel_type, video_type, 
+    video_source, upload_type, video_cover, video_state, audit_time, audit_person_id, 
+    audit_person_name, publish_time, publish_person_type, publish_person_id, publish_person_name, 
+    unpublish_time, unpublish_person_type, unpublish_person_id, unpublish_person_name, 
+    delete_time, delete_person_id, delete_person_name, create_time, create_person_id, 
+    create_person_name, download_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from video
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.video.domain.entity.Video">
+    insert into video (video_id, video_name, video_title, 
+      video_descript, video_content, channel_type, 
+      video_type, video_source, upload_type, 
+      video_cover, video_state, audit_time, 
+      audit_person_id, audit_person_name, publish_time, 
+      publish_person_type, publish_person_id, publish_person_name, 
+      unpublish_time, unpublish_person_type, unpublish_person_id, 
+      unpublish_person_name, delete_time, delete_person_id, 
+      delete_person_name, create_time, create_person_id, 
+      create_person_name, download_count)
+    values (#{videoId,jdbcType=VARCHAR}, #{videoName,jdbcType=VARCHAR}, #{videoTitle,jdbcType=VARCHAR}, 
+      #{videoDescript,jdbcType=VARCHAR}, #{videoContent,jdbcType=VARCHAR}, #{channelType,jdbcType=VARCHAR}, 
+      #{videoType,jdbcType=VARCHAR}, #{videoSource,jdbcType=VARCHAR}, #{uploadType,jdbcType=VARCHAR}, 
+      #{videoCover,jdbcType=VARCHAR}, #{videoState,jdbcType=VARCHAR}, #{auditTime,jdbcType=VARCHAR}, 
+      #{auditPersonId,jdbcType=VARCHAR}, #{auditPersonName,jdbcType=VARCHAR}, #{publishTime,jdbcType=VARCHAR}, 
+      #{publishPersonType,jdbcType=VARCHAR}, #{publishPersonId,jdbcType=VARCHAR}, #{publishPersonName,jdbcType=VARCHAR}, 
+      #{unpublishTime,jdbcType=VARCHAR}, #{unpublishPersonType,jdbcType=VARCHAR}, #{unpublishPersonId,jdbcType=VARCHAR}, 
+      #{unpublishPersonName,jdbcType=VARCHAR}, #{deleteTime,jdbcType=VARCHAR}, #{deletePersonId,jdbcType=VARCHAR}, 
+      #{deletePersonName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{createPersonId,jdbcType=VARCHAR}, 
+      #{createPersonName,jdbcType=VARCHAR}, #{downloadCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.video.domain.entity.Video">
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoName != null">
+        video_name,
+      </if>
+      <if test="videoTitle != null">
+        video_title,
+      </if>
+      <if test="videoDescript != null">
+        video_descript,
+      </if>
+      <if test="videoContent != null">
+        video_content,
+      </if>
+      <if test="channelType != null">
+        channel_type,
+      </if>
+      <if test="videoType != null">
+        video_type,
+      </if>
+      <if test="videoSource != null">
+        video_source,
+      </if>
+      <if test="uploadType != null">
+        upload_type,
+      </if>
+      <if test="videoCover != null">
+        video_cover,
+      </if>
+      <if test="videoState != null">
+        video_state,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+      <if test="auditPersonId != null">
+        audit_person_id,
+      </if>
+      <if test="auditPersonName != null">
+        audit_person_name,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="publishPersonType != null">
+        publish_person_type,
+      </if>
+      <if test="publishPersonId != null">
+        publish_person_id,
+      </if>
+      <if test="publishPersonName != null">
+        publish_person_name,
+      </if>
+      <if test="unpublishTime != null">
+        unpublish_time,
+      </if>
+      <if test="unpublishPersonType != null">
+        unpublish_person_type,
+      </if>
+      <if test="unpublishPersonId != null">
+        unpublish_person_id,
+      </if>
+      <if test="unpublishPersonName != null">
+        unpublish_person_name,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="deletePersonId != null">
+        delete_person_id,
+      </if>
+      <if test="deletePersonName != null">
+        delete_person_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createPersonId != null">
+        create_person_id,
+      </if>
+      <if test="createPersonName != null">
+        create_person_name,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoName != null">
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTitle != null">
+        #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDescript != null">
+        #{videoDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="videoContent != null">
+        #{videoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoSource != null">
+        #{videoSource,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        #{uploadType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="videoState != null">
+        #{videoState,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPersonId != null">
+        #{auditPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPersonName != null">
+        #{auditPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonType != null">
+        #{publishPersonType,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonId != null">
+        #{publishPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonName != null">
+        #{publishPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishTime != null">
+        #{unpublishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonType != null">
+        #{unpublishPersonType,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonId != null">
+        #{unpublishPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonName != null">
+        #{unpublishPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePersonId != null">
+        #{deletePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePersonName != null">
+        #{deletePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null">
+        #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonName != null">
+        #{createPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.video.domain.entity.Video">
+    update video
+    <set>
+      <if test="videoName != null">
+        video_name = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTitle != null">
+        video_title = #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDescript != null">
+        video_descript = #{videoDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="videoContent != null">
+        video_content = #{videoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null">
+        channel_type = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        video_type = #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoSource != null">
+        video_source = #{videoSource,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        upload_type = #{uploadType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        video_cover = #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="videoState != null">
+        video_state = #{videoState,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPersonId != null">
+        audit_person_id = #{auditPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPersonName != null">
+        audit_person_name = #{auditPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonType != null">
+        publish_person_type = #{publishPersonType,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonId != null">
+        publish_person_id = #{publishPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPersonName != null">
+        publish_person_name = #{publishPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishTime != null">
+        unpublish_time = #{unpublishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonType != null">
+        unpublish_person_type = #{unpublishPersonType,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonId != null">
+        unpublish_person_id = #{unpublishPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="unpublishPersonName != null">
+        unpublish_person_name = #{unpublishPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePersonId != null">
+        delete_person_id = #{deletePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePersonName != null">
+        delete_person_name = #{deletePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null">
+        create_person_id = #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonName != null">
+        create_person_name = #{createPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.video.domain.entity.Video">
+    update video
+    set video_name = #{videoName,jdbcType=VARCHAR},
+      video_title = #{videoTitle,jdbcType=VARCHAR},
+      video_descript = #{videoDescript,jdbcType=VARCHAR},
+      video_content = #{videoContent,jdbcType=VARCHAR},
+      channel_type = #{channelType,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=VARCHAR},
+      video_source = #{videoSource,jdbcType=VARCHAR},
+      upload_type = #{uploadType,jdbcType=VARCHAR},
+      video_cover = #{videoCover,jdbcType=VARCHAR},
+      video_state = #{videoState,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=VARCHAR},
+      audit_person_id = #{auditPersonId,jdbcType=VARCHAR},
+      audit_person_name = #{auditPersonName,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=VARCHAR},
+      publish_person_type = #{publishPersonType,jdbcType=VARCHAR},
+      publish_person_id = #{publishPersonId,jdbcType=VARCHAR},
+      publish_person_name = #{publishPersonName,jdbcType=VARCHAR},
+      unpublish_time = #{unpublishTime,jdbcType=VARCHAR},
+      unpublish_person_type = #{unpublishPersonType,jdbcType=VARCHAR},
+      unpublish_person_id = #{unpublishPersonId,jdbcType=VARCHAR},
+      unpublish_person_name = #{unpublishPersonName,jdbcType=VARCHAR},
+      delete_time = #{deleteTime,jdbcType=VARCHAR},
+      delete_person_id = #{deletePersonId,jdbcType=VARCHAR},
+      delete_person_name = #{deletePersonName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_person_id = #{createPersonId,jdbcType=VARCHAR},
+      create_person_name = #{createPersonName,jdbcType=VARCHAR},
+      download_count = #{downloadCount,jdbcType=INTEGER}
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video order by create_time desc limit #{offset},#{limit}
+  </select>
+  
+  <select id="selectAllBySearch" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from video where 1=1 
+    <if test="search != null and search != ''">
+    and (video_name like #{search} or video_title like #{search} or video_descript like #{search}) 
+    </if>
+    <if test="start != null and search != '' and end !=null and end != ''">
+    and user_register_time between #{start} and #{end}   
+    </if>
+    order by create_time desc  
+  </select>
+  
+  <select id="countVideo" resultType="Integer">
+    select count(video_id) from video 
+  </select>
+  
+  
+  <update id="updateState" parameterType="com.video.domain.entity.Video">
+    update video
+    <set>
+      <if test="videoState != null">
+        video_state = #{videoState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="batchDeleteVideo" parameterType="com.video.domain.entity.Video">
+        update video set video_state = '6' where video_id in
+        <foreach collection="videoIds" item="videoId" separator="," open="(" close=")">
+            #{videoId}
+        </foreach>
+  </update>
+  
+  
+  <select id="selectChanelType" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video where 1=1
+    <if test="channelType != null">
+    	and channel_type = #{channelType,jdbcType=VARCHAR}
+    </if>
+    order by create_time desc limit #{offset},#{limit}
+  </select>
+  
+  
+  <select id="selectMore" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video where 1=1
+    <if test="channelType != null and channelType !='all'">
+    	and channel_type = #{channelType,jdbcType=VARCHAR}
+    </if>
+    <if test="videoType != null and videoType !='all'">
+    	and video_type = #{videoType,jdbcType=VARCHAR}
+    </if>
+    <if test="videoSource != null and videoSource !='all'">
+    	and video_source = #{videoSource,jdbcType=VARCHAR}
+    </if>
+    order by create_time desc limit #{offset},#{limit}
+  </select>
+    
+  
+  <select id="countMore" resultType="Integer">
+    select count(video_id) from video where 1=1
+    <if test="channelType != null and channelType !='all'">
+    	and channel_type = #{channelType,jdbcType=VARCHAR}
+    </if>
+    <if test="videoType != null and videoType !='all'">
+    	and video_type = #{videoType,jdbcType=VARCHAR}
+    </if>
+    <if test="videoSource != null and videoSource !='all'">
+    	and video_source = #{videoSource,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <update id="updateDownCount" parameterType="com.video.domain.entity.Video">
+    update video
+    set download_count = download_count+1
+    where video_id = #{videoId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="selectKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video where 1=1 
+    <if test="keyword != null and keyword !=''">
+    	and (video_name like concat('%',#{keyword},'%') or video_title like concat('%',#{keyword},'%') or video_descript like concat('%',#{keyword},'%')) 
+    </if>
+    order by create_time desc limit #{offset},#{limit}
+  </select>
+  
+  <select id="countKey" resultType="Integer">
+    select count(video_id) from video where 1=1
+     <if test="keyword != null and keyword !=''">
+    	and (video_name like concat('%',#{keyword},'%') or video_title like concat('%',#{keyword},'%') or video_descript like concat('%',#{keyword},'%')) 
+    </if>
+  </select>
+  
+</mapper>

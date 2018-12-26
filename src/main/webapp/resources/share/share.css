@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/**
+*QQ分享按钮
+**/
+.shareDiv{
+	position: absolute;margin-top: -20px;width:380px;height:220px;background:#fff;border:2px solid #2EAFBB;border-radius: 5px;z-index:9999;
+}
+.shareDivBefore{
+	position: absolute;margin-top: -20px;width:380px;height:220px;background:#fff;border:2px solid #2EAFBB;border-radius: 5px;z-index:9999;
+}
+.shareDivIsShow{
+	display:none;
+}
+.shareDiv:before{
+ 	position: absolute;
+    border: 8px solid #2EAFBB;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    width: 0;
+    height: 0;
+    content: '';
+    margin: -16px 0px 0px 16px;
+
+}
+.shareDivBefore:before {
+	position: absolute;
+    border: 8px solid #2EAFBB;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    width: 0;
+    height: 0;
+    content: '';
+    margin: -16px 0px 0px 160px;
+}
+.shareHead{
+	position:relative;width:100%;height:20%;background:#2EAFBB;
+}
+.shareBody{
+	position:relative;width:100%;
+}
+.shareBtnDiv{
+	position:relative;margin-top:10px;
+}
+.shareUl{
+	position:relative;display:inline;white-space: nowrap;
+}
+
+.share_qq_li{
+	position:relative;display: inline-block;float:left;margin-left:10px;
+}
+.share_qq_a{
+	position:relative;display:inline-block;width:60px;height:60px;
+}
+.share_qq_i{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:#51cbf8;
+}
+.share_qq_i:hover{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:#2EAFBB;cursor:pointer;
+}
+.share_svg{
+	position:relative;left:9px;top:10px;
+}
+
+/**
+*QQ空间分享按钮
+**/
+.share_qq_zone_li{
+	position:relative;display: inline-block;float:left;margin-left:10px;
+}
+.share_qq_zone_a{
+	position:relative;display:inline-block;width:60px;height:60px;
+}
+.share_qq_zone_i{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:#f7ae32;
+}
+.share_qq_zone_i:hover{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:orange;cursor:pointer;
+}
+
+/**
+*微博分享按钮
+**/
+.share_weibo_li{
+	position:relative;display: inline-block;float:left;margin-left:10px;
+}
+.share_weibo_a{
+	position:relative;display:inline-block;width:60px;height:60px;
+}
+.share_weibo_i{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:#eb452f;
+}
+
+.share_weibo_i:hover{
+	position:relative;display:inline-block;width:60px;height:60px;border-radius:50px;background-color:#ff0000;cursor:pointer;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.domain.dao.AccountUploadVideoRecordMapper">
+  <resultMap id="BaseResultMap" type="com.video.domain.entity.AccountUploadVideoRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="video_id" jdbcType="VARCHAR" property="videoId" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, video_id, create_time, account_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_upload_video_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from account_upload_video_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.video.domain.entity.AccountUploadVideoRecord">
+    insert into account_upload_video_record (id, video_id, create_time, 
+      account_id)
+    values (#{id,jdbcType=VARCHAR}, #{videoId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.video.domain.entity.AccountUploadVideoRecord">
+    insert into account_upload_video_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.video.domain.entity.AccountUploadVideoRecord">
+    update account_upload_video_record
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.video.domain.entity.AccountUploadVideoRecord">
+    update account_upload_video_record
+    set video_id = #{videoId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

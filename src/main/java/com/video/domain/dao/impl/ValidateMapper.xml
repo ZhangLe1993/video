@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.domain.dao.ValidateMapper">
+  <resultMap id="BaseResultMap" type="com.video.domain.entity.Validate">
+    <id column="info_id" jdbcType="VARCHAR" property="infoId" />
+    <result column="info_answer" jdbcType="VARCHAR" property="infoAnswer" />
+    <result column="info_question" jdbcType="VARCHAR" property="infoQuestion" />
+    <result column="info_state" jdbcType="VARCHAR" property="infoState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    info_id, info_answer, info_question, info_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from validate
+    where info_id = #{infoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from validate
+    where info_id = #{infoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.video.domain.entity.Validate">
+    insert into validate (info_id, info_answer, info_question, 
+      info_state)
+    values (#{infoId,jdbcType=VARCHAR}, #{infoAnswer,jdbcType=VARCHAR}, #{infoQuestion,jdbcType=VARCHAR}, 
+      #{infoState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.video.domain.entity.Validate">
+    insert into validate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="infoAnswer != null">
+        info_answer,
+      </if>
+      <if test="infoQuestion != null">
+        info_question,
+      </if>
+      <if test="infoState != null">
+        info_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        #{infoId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoAnswer != null">
+        #{infoAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="infoQuestion != null">
+        #{infoQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="infoState != null">
+        #{infoState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.video.domain.entity.Validate">
+    update validate
+    <set>
+      <if test="infoAnswer != null">
+        info_answer = #{infoAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="infoQuestion != null">
+        info_question = #{infoQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="infoState != null">
+        info_state = #{infoState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.video.domain.entity.Validate">
+    update validate
+    set info_answer = #{infoAnswer,jdbcType=VARCHAR},
+      info_question = #{infoQuestion,jdbcType=VARCHAR},
+      info_state = #{infoState,jdbcType=VARCHAR}
+    where info_id = #{infoId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectRandom" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from validate order by rand() limit 1
+  </select>
+</mapper>

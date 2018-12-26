@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<!-- 扫描service包及其子包下所有的使用注解的类型，放到spring中创建实例 -->
+	<context:component-scan base-package="com.video.*.service"/>
+	
+	
+	<!-- 注入数据库连接池 mybatis使用的是jdbc的数据源，是基于数据源的方式注入 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 
+	          配置基于注解的声明式事务 
+	          默认使用注解的方式
+	-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

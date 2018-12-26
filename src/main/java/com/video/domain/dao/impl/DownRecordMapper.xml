@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.video.domain.dao.DownRecordMapper">
+  <resultMap id="BaseResultMap" type="com.video.domain.entity.DownRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="video_id" jdbcType="VARCHAR" property="videoId" />
+    <result column="download_time" jdbcType="VARCHAR" property="downloadTime" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_nick_name" jdbcType="VARCHAR" property="userNickName" />
+    <result column="download_ip" jdbcType="VARCHAR" property="downloadIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, video_id, download_time, user_id, user_nick_name, download_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_download_video_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_download_video_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.video.domain.entity.DownRecord">
+    insert into user_download_video_record (id, video_id, download_time, 
+      user_id, user_nick_name, download_ip
+      )
+    values (#{id,jdbcType=VARCHAR}, #{videoId,jdbcType=VARCHAR}, #{downloadTime,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR}, #{downloadIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.video.domain.entity.DownRecord">
+    insert into user_download_video_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="downloadTime != null">
+        download_time,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userNickName != null">
+        user_nick_name,
+      </if>
+      <if test="downloadIp != null">
+        download_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadTime != null">
+        #{downloadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadIp != null">
+        #{downloadIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.video.domain.entity.DownRecord">
+    update user_download_video_record
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadTime != null">
+        download_time = #{downloadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadIp != null">
+        download_ip = #{downloadIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.video.domain.entity.DownRecord">
+    update user_download_video_record
+    set video_id = #{videoId,jdbcType=VARCHAR},
+      download_time = #{downloadTime,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      download_ip = #{downloadIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
