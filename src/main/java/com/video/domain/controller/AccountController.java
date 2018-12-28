@@ -280,8 +280,12 @@ public class AccountController extends BaseController{
 				
 				//获取截图工具
 				String basePath = request.getSession().getServletContext().getRealPath(File.separator);
-				String ffmpegPath = basePath+"tools" + File.separator + "ffmpeg.exe";
+				String osName = System.getProperty("os.name");
 				
+				String ffmpegPath = basePath + "tools" + File.separator + "ffmpeg.exe";
+				if(osName.indexOf("Linux") != -1) {
+					ffmpegPath = "ffmpeg";
+				}
 				//转码成flv格式
 				//设置转换为flv格式后文件的保存路径
 				String codcFilePath = videoUpPath + File.separator + serialName + ".flv";                
@@ -292,11 +296,11 @@ public class AccountController extends BaseController{
 				CodeUtils.executeCodecs(ffmpegPath, uploadFile.getAbsolutePath(),codcFilePath, mediaPicPath);
 				//videoSrc = getBasePath(request) + "/video/upload/videos/"+serialName + ".flv";
 				videoSrc = "/upload/videos/"+serialName + ".flv";
-				String videoRealPath = basePath +"upload"+File.separator+"videos"+File.separator+serialName + ".flv";                //设置转换为flv格式后文件的保存路径
+				String videoRealPath = basePath + "upload" + File.separator + "videos" + File.separator + serialName + ".flv";                //设置转换为flv格式后文件的保存路径
 				
 				//pictureSrc = getBasePath(request) + "/video/upload/images/" + picName +".jpg";
-				pictureSrc = "/upload/images/" + picName +".jpg";
-				String picRealPath = basePath +"upload"+File.separator+"images"+File.separator+picName + ".jpg";
+				pictureSrc = "/upload/images/" + picName + ".jpg";
+				String picRealPath = basePath + "upload" + File.separator + "images" + File.separator + picName + ".jpg";
 				
 				fi.delete();
 				result.put("code", 200);
