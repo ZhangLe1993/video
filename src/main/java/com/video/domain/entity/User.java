@@ -1,5 +1,7 @@
 package com.video.domain.entity;
 
+import java.util.Arrays;
+
 public class User {
     private String userId;
 
@@ -250,4 +252,66 @@ public class User {
     public void setUserPhoto(byte[] userPhoto) {
         this.userPhoto = userPhoto;
     }
+
+	public User(String userId, String userLoginName, String userPassword, String userPhone, String userEmail,
+			String userStatus, String userLevel, Integer userIntegral, String lastLoginTime, String lastLoginIp,
+			String userRegisterTime, String userRegisterIp, String isVip, String vipEffectiveTime, String deleteFlag,
+			String userRealName, String userNickName, String userEducationStatus, String userAddressDivisions,
+			String userAddressDetail, String userSex, Integer userAge, String updateTime, String userSignature,
+			byte[] userPhoto) {
+		super();
+		this.userId = userId;
+		this.userLoginName = userLoginName;
+		this.userPassword = userPassword;
+		this.userPhone = userPhone;
+		this.userEmail = userEmail;
+		this.userStatus = userStatus;
+		this.userLevel = userLevel;
+		this.userIntegral = userIntegral;
+		this.lastLoginTime = lastLoginTime;
+		this.lastLoginIp = lastLoginIp;
+		this.userRegisterTime = userRegisterTime;
+		this.userRegisterIp = userRegisterIp;
+		this.isVip = isVip;
+		this.vipEffectiveTime = vipEffectiveTime;
+		this.deleteFlag = deleteFlag;
+		this.userRealName = userRealName;
+		this.userNickName = userNickName;
+		this.userEducationStatus = userEducationStatus;
+		this.userAddressDivisions = userAddressDivisions;
+		this.userAddressDetail = userAddressDetail;
+		this.userSex = userSex;
+		this.userAge = userAge;
+		this.updateTime = updateTime;
+		this.userSignature = userSignature;
+		this.userPhoto = userPhoto;
+	}
+
+	public User(String userId, String userPassword, String userSex, Integer userAge) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userSex = userSex;
+		this.userAge = userAge;
+	}
+
+	public User() {
+	}
+
+	@Override
+	public String toString() {
+		return "{\"userId\":\"" + userId + "\",\"userLoginName\":\"" + userLoginName + "\",\"userPassword\":\""
+				+ userPassword + "\",\"userPhone\":\"" + userPhone + "\",\"userEmail\":\"" + userEmail
+				+ "\",\"userStatus\":\"" + userStatus + "\",\"userLevel\":\"" + userLevel + "\",\"userIntegral\":\""
+				+ userIntegral + "\",\"lastLoginTime\":\"" + lastLoginTime + "\",\"lastLoginIp\":\"" + lastLoginIp
+				+ "\",\"userRegisterTime\":\"" + userRegisterTime + "\",\"userRegisterIp\":\"" + userRegisterIp
+				+ "\",\"isVip\":\"" + isVip + "\",\"vipEffectiveTime\":\"" + vipEffectiveTime + "\",\"deleteFlag\":\""
+				+ deleteFlag + "\",\"userRealName\":\"" + userRealName + "\",\"userNickName\":\"" + userNickName
+				+ "\",\"userEducationStatus\":\"" + userEducationStatus + "\",\"userAddressDivisions\":\""
+				+ userAddressDivisions + "\",\"userAddressDetail\":\"" + userAddressDetail + "\",\"userSex\":\""
+				+ userSex + "\",\"userAge\":\"" + userAge + "\",\"updateTime\":\"" + updateTime
+				+ "\",\"userSignature\":\"" + userSignature + "\",\"userPhoto\":\"" + Arrays.toString(userPhoto)
+				+ "\"} ";
+	}
+
 }

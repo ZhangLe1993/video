@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.video.annotation.SystemLog;
 import com.video.base.controller.BaseController;
 import com.video.base.pojo.ResultDO;
 import com.video.domain.entity.DownRecord;
@@ -49,6 +50,7 @@ public class VideoController  extends BaseController {
 	@Autowired
 	private DownRecordService downRecordService;
 	
+	@SystemLog(desc="跳转到首页")
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public String toVideoList(Model model,ModelMap map) throws Exception
 	{
@@ -363,4 +365,5 @@ public class VideoController  extends BaseController {
 				}
 			}
 	}
+	
 }

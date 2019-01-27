@@ -1,5 +1,8 @@
 package com.video.base.utils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Config {
 	
     /**
@@ -48,4 +51,18 @@ public class Config {
 		
         return ACTIVATE_SESSION_VCODE + ":" + sessionId + ":" + phone;
     }
+	
+	/**
+     * 任务文件必要字段信息
+     */
+    public static List<String> BASE_FILE_COLUMNS = Arrays.asList(
+            "fileId",   // 文件ID
+            "name",     // 文件名称
+            "size",     // 文件大小
+            "order",    // 文件序号
+            "path",     // 文件路径
+            "status",   // 文件状态
+            "delFlag",  // 删除标识
+            "extend"    // 扩展信息
+    );
 }

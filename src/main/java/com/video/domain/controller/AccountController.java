@@ -13,6 +13,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.video.annotation.RequestLog;
+import com.video.annotation.SystemLog;
 import com.video.base.controller.BaseController;
 import com.video.domain.entity.User;
 import com.video.domain.entity.Video;
@@ -42,6 +46,8 @@ public class AccountController extends BaseController{
 	private UserService userService;
 	@Autowired
 	private VideoService videoService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 	
 	@RequestMapping(value="/getPath.do",method=RequestMethod.GET)
 	@ResponseBody
@@ -391,6 +397,7 @@ public class AccountController extends BaseController{
 	
 	@RequestMapping(value="/getVideoList.do",method= {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
+	@SystemLog(desc="获取视频列表")
 	public TableResult getVideoList(int limit,int page,String channelType) throws Exception
 	{
 		TableResult resultMap = new TableResult();
@@ -405,13 +412,13 @@ public class AccountController extends BaseController{
 	        resultMap.setCount(videoService.countVideo());
 	        resultMap.setMsg("获取数据成功");
 	        resultMap.setData(list);
-	        System.out.println("获取数据成功");
+	        logger.info("获取数据成功");
 		}catch(Exception e) {
 			resultMap.setCode(500);  
 	        resultMap.setCount(0);
 	        resultMap.setMsg("获取数据失败");
 	        resultMap.setData(null);
-	        System.out.println("获取数据失败");
+	        logger.info("获取数据失败");
 	        e.printStackTrace();
 		}
 		return resultMap;	
