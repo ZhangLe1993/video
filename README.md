@@ -31,3 +31,7 @@ http://ec2-13-59-20-121.us-east-2.compute.amazonaws.com:8080/video/video/index �
 
 pom.xml文件json-lib  的Maven仓库调整了，所以做如下调整
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0131/142210_a9a2b2f8_1798934.png "屏幕截图.png")
+
+
+如果喜欢的话可以考虑捐助用于购买服务器
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0131/233455_19250a2e_1798934.png "屏幕截图.png")![输入图片说明](https://images.gitee.com/uploads/images/2019/0131/233510_32da99dc_1798934.png "屏幕截图.png")
