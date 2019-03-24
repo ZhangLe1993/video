@@ -5,9 +5,8 @@
 
 数据库文件video.sql
 
-线上环境地址 http://a204808i15.iok.la:40370/video/video/index（花生壳链接，打开很慢，将要废弃使用）
+线上环境地址 http://yule.viphk1.ngrok.org/video/video/index
             
-http://ec2-13-59-20-121.us-east-2.compute.amazonaws.com:8080/video/video/index （亚马逊云服务器地址）
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/1226/185447_02428f2d_1798934.jpeg "1.jpg")
 
